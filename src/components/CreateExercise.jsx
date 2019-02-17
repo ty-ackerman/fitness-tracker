@@ -3,7 +3,9 @@ import React, { Component } from "react";
 class CreateExercise extends Component {
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.formatTempo());
+    const tempo = this.formatTempo()
+    const {exercise, sets, reps, mods} = this.refs
+    this.props.newExerciseAdder(exercise.value, sets.value, reps.value, mods.value, tempo)
   };
 
   formatTempo = () => {
@@ -18,15 +20,15 @@ class CreateExercise extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Exercise:
-            <input type="text" name="exercise" ref="exercise" required />
+            <input type="text" name="exercise" ref="exercise" required defaultValue="Chinup"/>
           </label>
           <label>
             Sets:
-            <input type="number" ref="sets" required />
+            <input type="number" ref="sets" required defaultValue={3}/>
           </label>
           <label>
             Reps:
-            <input type="number" ref="reps" required />
+            <input type="number" ref="reps" required defaultValue={3}/>
           </label>
           <label>
             Modifications:
@@ -44,24 +46,28 @@ class CreateExercise extends Component {
               ref="tempo1"
               required
               placeholder="Eccentric"
+              defaultValue={3}
             />
             <input
               type="number"
               ref="tempo2"
               required
               placeholder="Pause (Midpoint)"
+              defaultValue={3}
             />
             <input
               type="number"
               ref="tempo3"
               required
               placeholder="Concentric"
+              defaultValue={3}
             />
             <input
               type="number"
               ref="tempo4"
               required
               placeholder="Pause (Top)"
+              defaultValue={3}
             />
           </label>
           <input type="submit" value="Submit" />

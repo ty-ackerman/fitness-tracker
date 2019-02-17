@@ -33,7 +33,7 @@ class Popup extends Component {
         </div>
         <div className="popup-components">
           {createExercise ? (
-            <CreateExercise activeDay={this.props.activeDay} />
+            <CreateExercise activeDay={this.props.activeDay} newExerciseAdder={this.props.newExerciseAdder} />
           ) : null}
         </div>
         <div>

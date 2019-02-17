@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SelectExercise from "./SelectExercise"
 
 class ActiveDay extends Component {
   renderMuscleGroupInTitle = () => {
@@ -9,6 +10,10 @@ class ActiveDay extends Component {
     }
     return `${this.props.activeDay.muscleGroupPrimary}`;
   };
+
+  componentDidMount() {
+    console.log("worked")
+  }
 
   render() {
     const {
@@ -21,9 +26,10 @@ class ActiveDay extends Component {
         <h1>{`Day ${activeDay.day} - ${this.renderMuscleGroupInTitle()}`}</h1>
         <button onClick={backToSelectDay}>Back</button>
         <div>
+          <h2><span>Exercise</span><span>Sets</span><span>Reps</span><span>Tempo</span></h2>
           {activeDay.exercises.length ? (
             activeDay.exercises.map(exercise => {
-              return <div>This Exercise</div>;
+              return <SelectExercise exercise={exercise}/>;
             })
           ) : (
             <p>No Exercises Logged</p>

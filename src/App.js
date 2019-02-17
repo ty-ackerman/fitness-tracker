@@ -76,6 +76,18 @@ class App extends Component {
     this.openOrClosePopup();
   };
 
+  newExerciseAdder = (exercise, sets, reps, mods, tempo) => {
+    // This function will add a new exercise to the active day
+    const activeDay = Object.assign({}, this.state.activeDay)
+    exercise = {
+      exercise, sets, reps, mods, tempo
+    }
+    activeDay.exercises.push(exercise)
+    console.log(activeDay)
+    this.setState({activeDay})
+    this.openOrClosePopup()
+  }
+
   renderPopup = () => {
     //This function decideds whether the popup should be displayed.
     //Other functions will pass which data to display in the popup
@@ -88,6 +100,7 @@ class App extends Component {
           weeks={this.state.weeks}
           newWeekAdder={this.newWeekAdder}
           newDayAdder={this.newDayAdder}
+          newExerciseAdder={this.newExerciseAdder}
           activeWeek={this.state.activeWeek}
           activeDay={this.state.activeDay}
         />
